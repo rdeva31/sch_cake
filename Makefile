@@ -1,7 +1,8 @@
 obj-m := sch_cake.o
-KERNEL_VERSION := $(shell uname -r)
-IDIR := /lib/modules/$(KERNEL_VERSION)/kernel/net/sched/
-KDIR := /lib/modules/$(KERNEL_VERSION)/build
+KERNEL_VERSION ?= $(shell uname -r)
+MODDIR ?= /lib/modules/
+IDIR := $(MODDIR)/$(KERNEL_VERSION)/kernel/net/sched/
+KDIR := $(MODDIR)/$(KERNEL_VERSION)/build
 PWD := $(shell pwd)
 VERSION := $(shell git rev-parse HEAD 2>/dev/null)
 default:
